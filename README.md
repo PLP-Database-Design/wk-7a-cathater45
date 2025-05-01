@@ -57,7 +57,15 @@ Task:
 
 - In the table above, the **CustomerName** column depends on **OrderID** (a partial dependency), which violates **2NF**. 
 
-- Write an SQL query to transform this table into **2NF** by removing partial dependencies. Ensure that each non-key column fully depends on the entire primary key.
+- Write an SQL query to transform this table into **2NF** by removing partial dependencies. Ensure that each non-key column fully depends on the entire primary key.CREATE TABLE Orders (
+    orderID INT,
+    productID VARCHAR(10),
+    orderDate DATE,
+    PRIMARY KEY (orderID, productID),
+    FOREIGN KEY (productID) REFERENCES Products(productID),
+    FOREIGN KEY (orderID) REFERENCES Customers(orderID)
+);
+
 
 ---
 Good luck 🚀
